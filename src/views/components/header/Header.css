@@ -1,0 +1,17 @@
+.headerIcon {
+  width: 27% !important; /* Default for screens wider than 1000px */
+}
+
+/* Between 451px and 1000px */
+@media (max-width: 1000px) and (min-width: 451px) {
+  .headerIcon {
+    width: 30% !important;
+  }
+}
+
+/* 450px and below */
+@media (max-width: 450px) {
+  .headerIcon {
+    width: 50% !important;
+  }
+}
