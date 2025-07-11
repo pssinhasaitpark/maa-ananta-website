@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div className="container px-0">
       {/* Newsletter Subscription Section */}
-      <div className="row mx-0" style={{ backgroundColor: "#8B4513" }}>
+      <div className="row mx-0" style={{ backgroundColor: "#6A1706" }}>
         <div className="col-12 py-4 text-center">
           <h2
             className="text-white mb-3"
@@ -52,35 +52,41 @@ const Footer = () => {
       {/* Navigation and Social Media Section */}
       <div className="row mx-0 bg-light py-3">
         <div className="col-12">
-          <div className="d-flex justify-content-between align-items-center flex-wrap">
+          <div className="d-flex justify-content-between align-items-center flex-wrap border-bottom border-top py-3 border-black">
             {/* Navigation Menu */}
-            <nav className="navbar navbar-expand-lg navbar-light p-0">
-              <div className="navbar-nav d-flex flex-row">
+            <nav className="navbar navbar-expand-lg navbar-light p-0 ">
+              <div className="navbar-nav d-flex flex-row align-items-center">
                 <a
-                  className="nav-link text-secondary me-4"
+                  className="nav-link text-secondary px-2"
                   href="#"
-                  style={{ fontSize: "1rem", padding: "0" }}
+                  style={{ fontSize: "1rem" }}
                 >
                   Home
                 </a>
+                <div className="vr mx-2" />
+
                 <a
-                  className="nav-link text-secondary me-4"
+                  className="nav-link text-secondary px-2"
                   href="#"
-                  style={{ fontSize: "1rem", padding: "0" }}
+                  style={{ fontSize: "1rem" }}
                 >
                   SEWA's Services
                 </a>
+                <div className="vr mx-2" />
+
                 <a
-                  className="nav-link text-secondary me-4"
+                  className="nav-link text-secondary px-2"
                   href="#"
-                  style={{ fontSize: "1rem", padding: "0" }}
+                  style={{ fontSize: "1rem" }}
                 >
                   Career and Research Opportunities
                 </a>
+                <div className="vr mx-2" />
+
                 <a
-                  className="nav-link text-secondary"
+                  className="nav-link text-secondary px-2"
                   href="#"
-                  style={{ fontSize: "1rem", padding: "0" }}
+                  style={{ fontSize: "1rem" }}
                 >
                   Contact Us
                 </a>
@@ -88,38 +94,38 @@ const Footer = () => {
             </nav>
 
             {/* Social Media Icons */}
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center ">
               <span
                 className="text-secondary me-3"
                 style={{ fontSize: "1rem" }}
               >
                 Follow Us :
               </span>
-              <div className="d-flex">
+              <div className="d-flex ">
                 <a
                   href="#"
-                  className="text-secondary mx-1"
+                  className="text-secondary mx-2"
                   style={{ fontSize: "1.2rem" }}
                 >
                   <i className="fab fa-youtube"></i>
                 </a>
                 <a
                   href="#"
-                  className="text-secondary mx-1"
+                  className="text-secondary mx-2"
                   style={{ fontSize: "1.2rem" }}
                 >
                   <i className="fab fa-facebook-f"></i>
                 </a>
                 <a
                   href="#"
-                  className="text-secondary mx-1"
+                  className="text-secondary mx-2"
                   style={{ fontSize: "1.2rem" }}
                 >
                   <i className="fab fa-linkedin-in"></i>
                 </a>
                 <a
                   href="#"
-                  className="text-secondary mx-1"
+                  className="text-secondary mx-2"
                   style={{ fontSize: "1.2rem" }}
                 >
                   <i className="fab fa-instagram"></i>
@@ -133,7 +139,7 @@ const Footer = () => {
                 </a>
                 <a
                   href="#"
-                  className="text-secondary mx-1"
+                  className="text-secondary mx-2"
                   style={{ fontSize: "1.2rem" }}
                 >
                   <i className="fab fa-whatsapp"></i>
@@ -145,7 +151,7 @@ const Footer = () => {
       </div>
 
       {/* Content Section */}
-      <div className="row mx-0">
+      <div className="row mx-0 border-bottom py-4 border-black">
         <div className="col-12 py-4 px-4">
           <div className="container">
             <p

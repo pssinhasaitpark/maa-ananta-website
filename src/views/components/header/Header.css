@@ -1,17 +1,92 @@
 .headerIcon {
-  width: 27% !important; /* Default for screens wider than 1000px */
+  width: 150px;
+  max-width: 100%;
+  height: auto;
 }
 
-/* Between 451px and 1000px */
-@media (max-width: 1000px) and (min-width: 451px) {
+@media (max-width: 1000px) {
   .headerIcon {
-    width: 30% !important;
+    width: 120px;
   }
 }
 
-/* 450px and below */
 @media (max-width: 450px) {
   .headerIcon {
-    width: 50% !important;
+    width: 100px;
   }
 }
+.language-selector {
+  position: relative;
+  padding: 0 12px; /* Space for lines on both sides */
+}
+
+.language-selector::before,
+.language-selector::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+ 
+  height: 70px; /* Adjust as needed */
+  background-color: #ccc; /* Or any color */
+}
+
+.language-selector::before {
+  left: 0;
+}
+
+.language-selector::after {
+  right: 0;
+}
+.hamburger-btn {
+  width: 30px;
+  height: 24px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: none;
+}
+
+.hamburger-icon,
+.hamburger-icon::before,
+.hamburger-icon::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background-color: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger-icon::before {
+  top: -8px;
+}
+
+.hamburger-icon::after {
+  top: 8px;
+}
+.hamburger-icon,
+.hamburger-icon::before,
+.hamburger-icon::after {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Subtle, progressive horizontal slide to the left */
+.hamburger-btn:hover .hamburger-icon::before {
+  transform: translateX(-2px);
+}
+
+.hamburger-btn:hover .hamburger-icon {
+  transform: translateX(5px);
+}
+
+.hamburger-btn:hover .hamburger-icon::after {
+  transform: translateX(5px);
+}
+
+

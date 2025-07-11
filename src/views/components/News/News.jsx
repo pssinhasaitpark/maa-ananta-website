@@ -8,7 +8,7 @@ const ContentSlider = ({
   autoSlide = false,
   autoSlideInterval = 3000,
   showDots = false,
-  backgroundColor = "#8B4513",
+  backgroundColor = "#6e3228",
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerSlide, setItemsPerSlide] = useState(slidesToShow);
@@ -68,7 +68,7 @@ const ContentSlider = ({
       {/* Header */}
       <div
         className="slider-header d-flex justify-content-between align-items-center p-3 text-white"
-        style={{ backgroundColor }}
+        style={{ backgroundColor: "#6e3228" }}
       >
         <h3 className="mb-0 fs-2 fw-bold">{title}</h3>
         <div className="slider-controls">
@@ -254,7 +254,7 @@ const News = () => {
         items={sampleItems}
         slidesToShow={4}
         autoSlide={false}
-        backgroundColor="#8B4513"
+        backgroundColor="#6A1706"
         showDots={true}
       />
 
@@ -265,7 +265,7 @@ const News = () => {
         slidesToShow={3}
         autoSlide={true}
         autoSlideInterval={4000}
-        backgroundColor="#2c5530"
+        backgroundColor="#6A1706"
         showDots={false}
       />
     </div>
