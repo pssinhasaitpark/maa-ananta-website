@@ -84,9 +84,9 @@ const LeftToRightTicker = () => {
   // Generate items with | separator and duplicate for seamless loop
   const renderItems = () => {
     const pipedItems = items.map((item, index) => (
-      <span key={index} className="px-2">
+      <span key={index} className="">
         {item}
-        <span className="px-2">|</span>
+        <span className=" mx-3 ">|</span>
       </span>
     ));
 
@@ -95,12 +95,12 @@ const LeftToRightTicker = () => {
   };
 
   return (
-    <div className="container border-top border-bottom py-1 bg-white overflow-hidden">
-      <hr />
+    <div className="container border-top border-bottom py-2 my-3 bg-white overflow-hidden ">
+      {/* <hr /> */}
       <div
         ref={tickerRef}
         className="position-relative w-100"
-        style={{ height: "30px" }}
+        style={{ height: "25px" }}
       >
         <div
           ref={contentRef}
@@ -109,9 +109,7 @@ const LeftToRightTicker = () => {
           {renderItems()}
         </div>
       </div>
-      <hr />
-
-
+      {/* <hr /> */}
     </div>
   );
 };
