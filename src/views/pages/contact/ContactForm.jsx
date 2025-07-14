@@ -321,7 +321,7 @@ const ContactUs = () => {
                               rows={4}
                               name="message"
                               placeholder="Write your message here... *"
-                              value={formData.message}
+                              value={formData.message} 
                               onChange={handleInputChange}
                               className="py-3"
                               style={{
