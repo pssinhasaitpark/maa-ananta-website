@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    // Here you can add logic to send the email to your backend or email service
+    console.log("Subscribed with email:", email);
+    setIsSubscribed(true);
+  };
+
   return (
     <div className="container px-0">
       {/* Newsletter Subscription Section */}
@@ -14,36 +24,44 @@ const Footer = () => {
           </h2>
           <div className="row justify-content-center">
             <div className="col-md-6 col-lg-4">
-              <div className="input-group">
-                <input
-                  type="email"
-                  className="form-control"
-                  placeholder="Your Email"
-                  style={{
-                    backgroundColor: "rgba(255,255,255,0.1)",
-                    border: "2px solid rgba(255,255,255,0.3)",
-                    color: "white",
-                    borderRadius: "0",
-                    padding: "12px 16px",
-                    fontSize: "1rem",
-                  }}
-                />
-                <button
-                  className="btn btn-light px-4"
-                  type="button"
-                  style={{
-                    backgroundColor: "white",
-                    color: "#8B4513",
-                    border: "none",
-                    borderRadius: "0",
-                    fontWeight: "500",
-                    padding: "12px 24px",
-                    fontSize: "1rem",
-                  }}
-                >
-                  Subscribe
-                </button>
-              </div>
+              <form onSubmit={handleSubscribe}>
+                <div className="input-group">
+                  <input
+                    type="email"
+                    className="form-control"
+                    placeholder="Your Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    style={{
+                      backgroundColor: "rgba(255,255,255,0.1)",
+                      border: "2px solid rgba(255,255,255,0.3)",
+                      color: "white",
+                      borderRadius: "0",
+                      padding: "12px 16px",
+                      fontSize: "1rem",
+                    }}
+                    required
+                  />
+                  <button
+                    className="btn btn-light px-4"
+                    type="submit"
+                    style={{
+                      backgroundColor: "white",
+                      color: "#8B4513",
+                      border: "none",
+                      borderRadius: "0",
+                      fontWeight: "500",
+                      padding: "12px 24px",
+                      fontSize: "1rem",
+                    }}
+                  >
+                    Subscribe
+                  </button>
+                </div>
+              </form>
+              {isSubscribed && (
+                <p className="text-white mt-2">Subscribed successfully!</p>
+              )}
             </div>
           </div>
         </div>
@@ -54,7 +72,7 @@ const Footer = () => {
         <div className="col-12">
           <div className="d-flex justify-content-between align-items-center flex-wrap border-bottom border-top py-3 border-black">
             {/* Navigation Menu */}
-            <nav className="navbar navbar-expand-lg navbar-light p-0 ">
+            <nav className="navbar navbar-expand-lg navbar-light p-0">
               <div className="navbar-nav d-flex flex-row align-items-center">
                 <a
                   className="nav-link text-secondary px-2"
@@ -64,16 +82,14 @@ const Footer = () => {
                   Home
                 </a>
                 <div className="vr mx-2" />
-
                 <a
                   className="nav-link text-secondary px-2"
                   href="#"
                   style={{ fontSize: "1rem" }}
                 >
-                  SEWA's Services
+                  Services
                 </a>
                 <div className="vr mx-2" />
-
                 <a
                   className="nav-link text-secondary px-2"
                   href="#"
@@ -82,10 +98,9 @@ const Footer = () => {
                   Career and Research Opportunities
                 </a>
                 <div className="vr mx-2" />
-
                 <a
                   className="nav-link text-secondary px-2"
-                  href="#"
+                  href="/contact"
                   style={{ fontSize: "1rem" }}
                 >
                   Contact Us
@@ -94,14 +109,14 @@ const Footer = () => {
             </nav>
 
             {/* Social Media Icons */}
-            <div className="d-flex align-items-center ">
+            <div className="d-flex align-items-center">
               <span
                 className="text-secondary me-3"
                 style={{ fontSize: "1rem" }}
               >
-                Follow Us :
+                Follow Us:
               </span>
-              <div className="d-flex ">
+              <div className="d-flex">
                 <a
                   href="#"
                   className="text-secondary mx-2"
@@ -163,10 +178,12 @@ const Footer = () => {
                 fontWeight: "400",
               }}
             >
-              We are 3.2 million women members of the SEWA from across the
-              country working in different trades and speaking diverse
-              languages. In SEWA, we believe in the power of inclusivity and
-              oneness.
+              Maa Ananta Abyudaya Samjik Sewa Samiti (MAA) is a organization
+              based in Indore, Madhya Pradesh, dedicated to the upliftment of
+              tribal and rural communities in the Nimar and Malwa regions. It
+              focuses on education, child welfare, vocational training,
+              environmental conservation, and health awareness to promote
+              holistic and sustainable development.
             </p>
 
             <hr
@@ -183,10 +200,8 @@ const Footer = () => {
                 fontWeight: "400",
               }}
             >
-              Self Employed Women's Association (SEWA), is the single largest
-              Central Trade Union for the women workers in the informal economy
-              in India. We are registered under the Trade Union's Act,1926 on
-              April 12, 1972 with registration number G.938.
+              Empowering communities through education, care, and sustainable
+              development — one step at a time with MAA.
             </p>
           </div>
         </div>
@@ -199,7 +214,8 @@ const Footer = () => {
             className="text-start mb-0"
             style={{ color: "#999", fontSize: "0.9rem" }}
           >
-            SEWA © 2025 | All Rights Reserved
+            Maa Ananta Abyudaya Samjik Sewa Samiti (MAA) © 2025 | All Rights
+            Reserved
           </p>
         </div>
       </div>
