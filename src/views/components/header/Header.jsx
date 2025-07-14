@@ -12,12 +12,16 @@ import {
 } from "react-icons/fa";
 import { Logo } from "../../../assets/index.js";
 import "./Header.css"; // Assuming you have a CSS file for additional styles
+import { Link } from "react-router-dom";
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  const [language, setLanguage] = useState("EN");
+  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
 
   const navItems = [
     {
@@ -31,36 +35,13 @@ const Header = () => {
     },
     {
       label: "ABOUT US",
-      items: [
-        "History",
-        "SEWA’s 11 Questions",
-        "SEWA's Structure",
-        "FCRA Details",
-      ],
+      items: ["History"],
     },
-    {
-      label: "PUBLICATIONS",
-      items: [
-        "Papers",
-        "Ansuya – SEWA’s Newsletter",
-        "Reports & Appeal",
-        "Books",
-        "Archives",
-        "Blog",
-      ],
-    },
+
     { label: "GALLERY", items: ["Photo Gallery", "Audio and Video Library"] },
     {
       label: "MEMBERSHIP AND AFFILIATIONS",
       items: ["SEWA’s Membership", "SEWA’s Affiliations"],
-    },
-    {
-      label: "STRUGGLE FOR VOICE, VISIBILITY AND VALIDITY",
-      items: [
-        "Four Pillars of SEWA",
-        "SEWA’s Campaigns",
-        "SEWA’s sister Organizations",
-      ],
     },
   ];
 
@@ -71,17 +52,17 @@ const Header = () => {
           <nav className="navbar navbar-expand-lg navbar-light py-4">
             <div className="navbar-brand d-flex align-items-center me-auto">
               <div className="">
+                <Link to ="/">
                 <img
                   src={Logo}
                   alt="SEWA Logo"
                   className="img-fluid headerIcon"
                 />
+                </Link>
               </div>
             </div>
             <div className="d-none d-md-flex align-items-center">
-              <span className="me-3 text-muted fs-5" >
-                Follow Us:
-              </span>
+              <span className="me-3 text-muted fs-5">Follow Us:</span>
               <div className="d-flex gap-2 me-3">
                 {[
                   FaYoutube,
@@ -105,7 +86,55 @@ const Header = () => {
                   </a>
                 ))}
               </div>
-              <div className="language-selector d-flex align-items-center px-4">
+              <div className="language-selector position-relative px-4">
+                <div
+                  className="d-flex align-items-center language-toggle "
+                  onClick={() => setLangDropdownOpen((prev) => !prev)}
+                  style={{ cursor: "pointer" }}
+                >
+                  <span
+                    style={{ fontSize: "1.2rem", color: "#333" }}
+                    className=""
+                  >
+                    {language}
+                  </span>
+                  <FaChevronDown
+                    size={12}
+                    style={{ color: "#666", transition: "transform 0.3s ease" }}
+                    className={`mx-1 ${langDropdownOpen ? "rotate-up" : ""}`}
+                  />
+                </div>
+
+                {langDropdownOpen && (
+                  <ul
+                    className="language-dropdown list-unstyled position-absolute bg-white border shadow-sm mt-2 me-5"
+                    style={{ minWidth: "100px", zIndex: 1000 }}
+                  >
+                    <li
+                      className="px-3 py-2 language-option"
+                      onClick={() => {
+                        setLanguage("EN");
+                        setLangDropdownOpen(false);
+                      }}
+                      style={{ cursor: "pointer" }}
+                    >
+                      English
+                    </li>
+                    <li
+                      className="px-3 py-2  language-option"
+                      onClick={() => {
+                        setLanguage("हिंदी");
+                        setLangDropdownOpen(false);
+                      }}
+                      style={{ cursor: "pointer" }}
+                    >
+                      हिंदी
+                    </li>
+                  </ul>
+                )}
+              </div>
+
+              {/* <div className="language-selector d-flex align-items-center px-4">
                 <span
                   className=" me-1 "
                   style={{ fontSize: "1.2rem", color: "#333" }}
@@ -113,16 +142,15 @@ const Header = () => {
                   EN
                 </span>
                 <FaChevronDown size={12} style={{ color: "#666" }} className="mx-1" />
-              </div>
+              </div> */}
             </div>
-           <button
-  className={`btn btn-link border-0 p-0 ms-3 text-muted hamburger-btn`}
-  type="button"
-  onClick={toggleMenu}
->
-  <span className="hamburger-icon " />
-</button>
-
+            <button
+              className={`btn btn-link border-0 p-0 ms-3 text-muted hamburger-btn`}
+              type="button"
+              onClick={toggleMenu}
+            >
+              <span className="hamburger-icon " />
+            </button>
           </nav>
         </div>
         <div
@@ -146,12 +174,21 @@ const Header = () => {
                   <ul className="list-unstyled">
                     {section.items.map((item, itemIndex) => (
                       <li key={itemIndex} className="px-3 py-1">
-                        <a
-                          href="#"
-                          className="text-decoration-none text-dark menu-item"
-                        >
-                          {item}
-                        </a>
+                        {item === "Contact Us" ? (
+                          <Link
+                            to="/contact"
+                            className="text-decoration-none text-dark menu-item"
+                          >
+                            {item}
+                          </Link>
+                        ) : (
+                          <a
+                            href="#"
+                            className="text-decoration-none text-dark menu-item"
+                          >
+                            {item}
+                          </a>
+                        )}
                       </li>
                     ))}
                   </ul>

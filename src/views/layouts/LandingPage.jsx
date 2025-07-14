@@ -7,7 +7,7 @@ import {
   Footer,
 } from "../components/index";
 import PartnerSection from "../components/PartnerSection";
-import { img1, img2 } from "../../assets";
+import { group1, img1, img2 } from "../../assets";
 const LandingPage = () => {
   return (
     <>
@@ -29,7 +29,13 @@ const LandingPage = () => {
         partners={["Company A", "Company B"]}
         flexDirection="row"
       /> */}
-
+<PartnerSection
+        image={group1}
+        heading="वृद्ध आश्रम में आवश्यक वस्तुओं का वितरण एवं वृद्धों के साथ हास्य विनोद करते हुए महेश्वर में (24 JAN.,20219)"
+        content=""
+        // partners={["Company A", "Company B"]}
+        flexDirection="row-reverse"
+      />
       <Footer />
     </>
   );

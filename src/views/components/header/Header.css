@@ -90,3 +90,11 @@
 }
 
 
+.language-option:hover {
+  background-color: #6e3228;
+  color: white;
+}
+
+.rotate-up {
+  transform: rotate(180deg);
+}

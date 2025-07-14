@@ -1,8 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { img1, img2, img3, img4, img5 } from "../../../assets";
+import {
+  img1,
+  img2,
+  img3,
+  img4,
+  img5,
+  DataImg1,
+  DataImg2,
+  DataImg3,
+  DataImg4,
+  DataImg5,
+  DataImg6,
+  DataImg7,
+  DataImg8,
+  DataImg9,
+  DataImg10,
+  DataImg11,
+  DataImg12,
+  DataImg13,
+  DataImg14,
+  DataImg15,
+  DataImg16,
+  DataImg17,
+  DataImg18,
+  DataImg19,
+} from "../../../assets";
+import sampleItems from "../../utiles/sampleItems.json";
 
 const ContentSlider = ({
-  title = "Latest Content",
+  title = "Education",
   items = [],
   slidesToShow = 4,
   autoSlide = false,
@@ -174,71 +200,54 @@ const ContentSlider = ({
 
 // Example usage component
 const News = () => {
-  const sampleItems = [
-    {
-      image: img2,
-      category: "News",
-      date: "November 2 2023",
-      title:
-        "In Elaben's honour, IUF declares Nov 2 as International Day for Informal Sector",
-      excerpt:
-        "A significant milestone in recognizing the contributions of informal sector workers worldwide.",
-      link: "#",
-      readMoreText: "Read More",
-    },
-    {
-      image: img1,
-      category: "News",
-      date: "June 26 2025",
-      title:
-        "ILO's Policy Guidelines for the Promotion of Decent work in Recycling: SEWA's Intervention",
-      excerpt:
-        "SEWA's comprehensive approach to promoting decent work conditions in the recycling sector.",
-      link: "#",
-      readMoreText: "Read More",
-    },
-    {
-      image: img5,
-      category: "News",
-      date: "June 26 2025",
-      title: "Dan Gallin: A lifelong fighter for workers and a hero for SEWA",
-      excerpt:
-        "Remembering the contributions of a dedicated advocate for workers' rights.",
-      link: "#",
-      readMoreText: "Read More",
-    },
-    {
-      image: img4,
-      category: "News",
-      date: "February 10 2025",
-      title:
-        "In Conversation with Honorable Finance Minister Shri. Nirmala Sitharaman",
-      excerpt:
-        "A detailed discussion on policy initiatives and their impact on the informal sector.",
-      link: "#",
-      readMoreText: "Read More",
-    },
-    {
-      image: img3,
-      category: "News",
-      date: "January 15 2025",
-      title: "Global Summit on Women's Economic Empowerment",
-      excerpt:
-        "Key insights from the international conference on women's economic participation.",
-      link: "#",
-      readMoreText: "Read More",
-    },
-    {
-      image: img1,
-      category: "News",
-      date: "December 20 2024",
-      title: "Annual Report: Progress in Sustainable Development Goals",
-      excerpt:
-        "Comprehensive review of achievements and challenges in meeting SDG targets.",
-      link: "#",
-      readMoreText: "Read More",
-    },
-  ];
+  // Map the imported JSON data to include the actual image imports
+  const itemsWithImages = sampleItems.sampleItems.map((item) => {
+    // Replace the image names with the actual imported images
+    const imageMap = {
+      DataImg1: DataImg1,
+      DataImg2: DataImg2,
+      DataImg3: DataImg3,
+      DataImg4: DataImg4,
+      DataImg5: DataImg5,
+      // DataImg6: DataImg6,
+      // DataImg7: DataImg7,
+      // DataImg8: DataImg8,
+      // DataImg9: DataImg9,
+      // DataImg10: DataImg10,
+      // DataImg11: DataImg11,
+      DataImg12: DataImg12,
+      DataImg13: DataImg13,
+      // DataImg14: DataImg14,
+      // DataImg15: DataImg15,
+      // DataImg16: DataImg16,
+    };
+    return { ...item, image: imageMap[item.image] };
+  });
+  const itemsWithImagees2 = sampleItems.seminarData.map((item) => {
+    // Replace the image names with the actual imported images
+    const imageMap = {
+      DataImg1: DataImg1,
+      DataImg2: DataImg2,
+      DataImg3: DataImg3,
+      DataImg4: DataImg4,
+      DataImg5: DataImg5,
+      DataImg6: DataImg6,
+      DataImg7: DataImg7,
+      DataImg8: DataImg8,
+      DataImg9: DataImg9,
+      DataImg10: DataImg10,
+      DataImg11: DataImg11,
+      DataImg12: DataImg12,
+      DataImg13: DataImg13,
+      DataImg14: DataImg14,
+      DataImg15: DataImg15,
+      DataImg16: DataImg16,
+      DataImg17: DataImg17,
+      DataImg18: DataImg18,
+      DataImg19: DataImg19,
+    };
+    return { ...item, image: imageMap[item.image] };
+  });
 
   return (
     <div className="container p-0">
@@ -250,8 +259,8 @@ const News = () => {
 
       {/* Main slider */}
       <ContentSlider
-        title="Latest Content"
-        items={sampleItems}
+        title="Education"
+        items={itemsWithImages}
         slidesToShow={4}
         autoSlide={false}
         backgroundColor="#6A1706"
@@ -261,7 +270,7 @@ const News = () => {
       {/* Example with different configuration */}
       <ContentSlider
         title="Recent Updates"
-        items={sampleItems.slice(0, 3)}
+        items={itemsWithImagees2}
         slidesToShow={3}
         autoSlide={true}
         autoSlideInterval={4000}
