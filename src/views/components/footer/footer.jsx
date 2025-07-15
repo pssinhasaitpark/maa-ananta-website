@@ -1,4 +1,13 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  FaYoutube,
+  FaFacebookF,
+  FaLinkedinIn,
+  FaInstagram,
+  FaTwitter,
+  FaWhatsapp,
+} from "react-icons/fa";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -6,14 +15,12 @@ const Footer = () => {
 
   const handleSubscribe = (e) => {
     e.preventDefault();
-    // Here you can add logic to send the email to your backend or email service
     console.log("Subscribed with email:", email);
     setIsSubscribed(true);
   };
 
   return (
     <div className="container px-0">
-      {/* Newsletter Subscription Section */}
       <div className="row mx-0" style={{ backgroundColor: "#6A1706" }}>
         <div className="col-12 py-4 text-center">
           <h2
@@ -23,36 +30,34 @@ const Footer = () => {
             Subscribe to Our Newsletter
           </h2>
           <div className="row justify-content-center">
-            <div className="col-md-6 col-lg-4">
+            <div className="col-md-8 col-lg-8">
               <form onSubmit={handleSubscribe}>
                 <div className="input-group">
                   <input
                     type="email"
-                    className="form-control"
+                    className="form-control no-focus-outline text-light rounded-0"
                     placeholder="Your Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     style={{
                       backgroundColor: "rgba(255,255,255,0.1)",
                       border: "2px solid rgba(255,255,255,0.3)",
-                      color: "white",
-                      borderRadius: "0",
-                      padding: "12px 16px",
                       fontSize: "1rem",
+                      outline: "none",
+                      boxShadow: "none",
                     }}
                     required
                   />
                   <button
-                    className="btn btn-light px-4"
+                    className="btn fw-bolder btn-light px-4 no-focus-outline border-0 rounded-0 fw-bolder bg-light outline-0"
                     type="submit"
                     style={{
-                      backgroundColor: "white",
                       color: "#8B4513",
-                      border: "none",
-                      borderRadius: "0",
-                      fontWeight: "500",
+
                       padding: "12px 24px",
-                      fontSize: "1rem",
+                      fontSize: "1.3rem",
+
+                      boxShadow: "none",
                     }}
                   >
                     Subscribe
@@ -67,11 +72,9 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Navigation and Social Media Section */}
       <div className="row mx-0 bg-light py-3">
         <div className="col-12">
           <div className="d-flex justify-content-between align-items-center flex-wrap border-bottom border-top py-3 border-black">
-            {/* Navigation Menu */}
             <nav className="navbar navbar-expand-lg navbar-light p-0">
               <div className="navbar-nav d-flex flex-row align-items-center">
                 <a
@@ -98,17 +101,16 @@ const Footer = () => {
                   Career and Research Opportunities
                 </a>
                 <div className="vr mx-2" />
-                <a
+                <Link
                   className="nav-link text-secondary px-2"
-                  href="/contact"
+                  to="/contact"
                   style={{ fontSize: "1rem" }}
                 >
                   Contact Us
-                </a>
+                </Link>
               </div>
             </nav>
 
-            {/* Social Media Icons */}
             <div className="d-flex align-items-center">
               <span
                 className="text-secondary me-3"
@@ -120,44 +122,44 @@ const Footer = () => {
                 <a
                   href="#"
                   className="text-secondary mx-2"
-                  style={{ fontSize: "1.2rem" }}
+                  style={{ fontSize: "1.4rem" }}
                 >
-                  <i className="fab fa-youtube"></i>
+                  <FaYoutube />
                 </a>
                 <a
                   href="#"
                   className="text-secondary mx-2"
-                  style={{ fontSize: "1.2rem" }}
+                  style={{ fontSize: "1.4rem" }}
                 >
-                  <i className="fab fa-facebook-f"></i>
+                  <FaFacebookF />
                 </a>
                 <a
                   href="#"
                   className="text-secondary mx-2"
-                  style={{ fontSize: "1.2rem" }}
+                  style={{ fontSize: "1.4rem" }}
                 >
-                  <i className="fab fa-linkedin-in"></i>
+                  <FaLinkedinIn />
                 </a>
                 <a
                   href="#"
                   className="text-secondary mx-2"
-                  style={{ fontSize: "1.2rem" }}
+                  style={{ fontSize: "1.4rem" }}
                 >
-                  <i className="fab fa-instagram"></i>
-                </a>
-                <a
-                  href="#"
-                  className="text-secondary mx-1"
-                  style={{ fontSize: "1.2rem" }}
-                >
-                  <i className="fab fa-twitter"></i>
+                  <FaInstagram />
                 </a>
                 <a
                   href="#"
                   className="text-secondary mx-2"
-                  style={{ fontSize: "1.2rem" }}
+                  style={{ fontSize: "1.4rem" }}
                 >
-                  <i className="fab fa-whatsapp"></i>
+                  <FaTwitter />
+                </a>
+                <a
+                  href="#"
+                  className="text-secondary mx-2"
+                  style={{ fontSize: "1.4rem" }}
+                >
+                  <FaWhatsapp />
                 </a>
               </div>
             </div>
@@ -165,7 +167,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Content Section */}
       <div className="row mx-0 border-bottom py-4 border-black">
         <div className="col-12 py-4 px-4">
           <div className="container">
@@ -207,7 +208,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Footer */}
       <div className="row mx-0">
         <div className="col-12 py-2 px-4">
           <p
@@ -220,18 +220,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Font Awesome CSS for icons */}
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      />
-
-      {/* Bootstrap CSS */}
-      <link
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
-        rel="stylesheet"
-      />
-
       <style jsx>{`
         .form-control::placeholder {
           color: rgba(255, 255, 255, 0.7) !important;
@@ -242,6 +230,7 @@ const Footer = () => {
           border-color: rgba(255, 255, 255, 0.5) !important;
           color: white !important;
           box-shadow: none !important;
+          outline: none !important;
         }
 
         .nav-link:hover {
@@ -254,6 +243,18 @@ const Footer = () => {
 
         a:hover {
           color: #8b4513 !important;
+        }
+
+        /* More specific selectors for removing focus outline */
+        .no-focus-outline:focus,
+        .no-focus-outline:focus-visible,
+        .form-control:focus,
+        .form-control:focus-visible,
+        .btn:focus,
+        .btn:focus-visible {
+          box-shadow: none !important;
+          border-color: rgba(255, 255, 255, 0.3) !important;
+          outline: none !important;
         }
       `}</style>
     </div>

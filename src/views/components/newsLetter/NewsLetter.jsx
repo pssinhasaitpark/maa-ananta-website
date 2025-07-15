@@ -95,7 +95,7 @@ const LeftToRightTicker = () => {
   };
 
   return (
-    <div className="container border-top border-bottom py-2 my-3 bg-white overflow-hidden ">
+    <div className="container border-top border-bottom py-3 mt-4 bg-white overflow-hidden ">
       {/* <hr /> */}
       <div
         ref={tickerRef}

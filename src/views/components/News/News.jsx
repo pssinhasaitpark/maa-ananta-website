@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 import {
-  img1,
-  img2,
-  img3,
-  img4,
-  img5,
+
   DataImg1,
   DataImg2,
   DataImg3,
   DataImg4,
   DataImg5,
   DataImg6,
-  DataImg7,
+  DataImg7, 
   DataImg8,
   DataImg9,
   DataImg10,
@@ -24,8 +22,57 @@ import {
   DataImg17,
   DataImg18,
   DataImg19,
+  group1,
 } from "../../../assets";
 import sampleItems from "../../utiles/sampleItems.json";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import PartnerSection from "../PartnerSection";
+
+const Modal = ({ item, onClose, onImageClick }) => {
+  return (
+    <div
+      className="modal show d-block"
+      tabIndex="-1"
+      role="dialog"
+      style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+      onClick={onClose}
+    >
+      <div
+        className="modal-dialog modal-dialog-centered"
+        role="document"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title fw-bolder">{item.title}</h5>
+            <button
+              type="button"
+              className="btn-close"
+              onClick={onClose}
+              aria-label="Close"
+            ></button>
+          </div>
+          <div className="modal-body">
+            {item.image && (
+              <img
+                src={item.image}
+                alt={item.title}
+                className="img-fluid mb-3"
+                style={{
+                  height: "200px",
+                  objectFit: "cover",
+                  cursor: "pointer",
+                }}
+                onClick={() => onImageClick(item.image)}
+              />
+            )}
+            <p>{item.excerpt}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const ContentSlider = ({
   title = "Education",
@@ -34,10 +81,13 @@ const ContentSlider = ({
   autoSlide = false,
   autoSlideInterval = 3000,
   showDots = false,
-  backgroundColor = "#6e3228",
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerSlide, setItemsPerSlide] = useState(slidesToShow);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [lightboxSlides, setLightboxSlides] = useState([]);
 
   // Handle responsive design
   useEffect(() => {
@@ -89,14 +139,30 @@ const ContentSlider = ({
   const canGoPrev = currentIndex > 0;
   const canGoNext = currentIndex < items.length - itemsPerSlide;
 
+  const openModal = (item) => {
+    setSelectedItem(item);
+  };
+
+  const closeModal = () => {
+    setSelectedItem(null);
+  };
+
+  const handleImageClick = (imageSrc) => {
+    const slides = items.map((item) => ({ src: item.image }));
+    const index = items.findIndex((item) => item.image === imageSrc);
+    setLightboxSlides(slides);
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
   return (
-    <div className="content-slider-container my-5">
+    <div className="content-slider-container my-4">
       {/* Header */}
       <div
         className="slider-header d-flex justify-content-between align-items-center p-3 text-white"
         style={{ backgroundColor: "#6e3228" }}
       >
-        <h3 className="mb-0 fs-2 fw-bold">{title}</h3>
+        <h3 className="mb-0 fs-2 fw-bolder">{title}</h3>
         <div className="slider-controls">
           <button
             className="btn btn-outline-light btn-sm me-2"
@@ -104,15 +170,16 @@ const ContentSlider = ({
             disabled={!canGoPrev}
             style={{ opacity: canGoPrev ? 1 : 0.5 }}
           >
-            <i className="fas fa-chevron-left"></i>
+            <FaChevronLeft />
           </button>
+
           <button
             className="btn btn-outline-light btn-sm"
             onClick={nextSlide}
             disabled={!canGoNext}
             style={{ opacity: canGoNext ? 1 : 0.5 }}
           >
-            <i className="fas fa-chevron-right"></i>
+            <FaChevronRight />
           </button>
         </div>
       </div>
@@ -138,7 +205,12 @@ const ContentSlider = ({
                     src={item.image}
                     alt={item.title}
                     className="card-img-top"
-                    style={{ height: "200px", objectFit: "cover" }}
+                    style={{
+                      height: "200px",
+                      objectFit: "cover",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => handleImageClick(item.image)}
                   />
                 )}
                 <div className="card-body d-flex flex-column">
@@ -148,19 +220,22 @@ const ContentSlider = ({
                     </span>
                     <small className="text-muted">{item.date}</small>
                   </div>
-                  <h5 className="card-title text-dark mb-3">{item.title}</h5>
+                  <h5 className="card-title text-dark mb-3 fw-bolder">
+                    {item.title}
+                  </h5>
                   {item.excerpt && (
                     <p className="card-text text-muted flex-grow-1">
-                      {item.excerpt}
+                      {item.excerpt && item.excerpt.substring(0, 135)}
+                      {item.excerpt && item.excerpt.length > 135 ? "..." : ""}
                     </p>
                   )}
                   <div className="mt-auto">
-                    <a
-                      href={item.link || "#"}
+                    <button
+                      onClick={() => openModal(item)}
                       className="btn btn-link text-decoration-none p-0"
                     >
                       {item.readMoreText || "Read More"}
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -189,10 +264,21 @@ const ContentSlider = ({
         </div>
       )}
 
-      {/* FontAwesome CDN for icons */}
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      {/* Modal */}
+      {selectedItem && (
+        <Modal
+          item={selectedItem}
+          onClose={closeModal}
+          onImageClick={handleImageClick}
+        />
+      )}
+
+      {/* Lightbox */}
+      <Lightbox
+        open={lightboxOpen}
+        close={() => setLightboxOpen(false)}
+        slides={lightboxSlides}
+        index={lightboxIndex}
       />
     </div>
   );
@@ -209,17 +295,8 @@ const News = () => {
       DataImg3: DataImg3,
       DataImg4: DataImg4,
       DataImg5: DataImg5,
-      // DataImg6: DataImg6,
-      // DataImg7: DataImg7,
-      // DataImg8: DataImg8,
-      // DataImg9: DataImg9,
-      // DataImg10: DataImg10,
-      // DataImg11: DataImg11,
       DataImg12: DataImg12,
       DataImg13: DataImg13,
-      // DataImg14: DataImg14,
-      // DataImg15: DataImg15,
-      // DataImg16: DataImg16,
     };
     return { ...item, image: imageMap[item.image] };
   });
@@ -251,12 +328,6 @@ const News = () => {
 
   return (
     <div className="container p-0">
-      {/* Bootstrap CSS */}
-      <link
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
-        rel="stylesheet"
-      />
-
       {/* Main slider */}
       <ContentSlider
         title="Education"
@@ -266,7 +337,13 @@ const News = () => {
         backgroundColor="#6A1706"
         showDots={true}
       />
-
+      <PartnerSection
+        image={group1}
+        heading="वृद्ध आश्रम में आवश्यक वस्तुओं का वितरण एवं वृद्धों के साथ हास्य विनोद करते हुए महेश्वर में "
+        content="24 जनवरी 2019 को महेश्वर में माँ अनंता अभुदय सामाजिक सेवा संस्था द्वारा वृद्ध आश्रम में सेवा कार्यक्रम आयोजित किया गया। इस अवसर पर आश्रम में आवश्यक वस्तुओं का वितरण किया गया, जिसमें दैनिक उपयोग की सामग्री शामिल थी। संस्था के सदस्यों ने बुज़ुर्गों के साथ समय बिताया, हास्य-विनोद और संवाद के माध्यम से उन्हें आनंदित किया। इस सेवाभावी पहल ने वृद्धजनों के चेहरे पर मुस्कान बिखेरी और सामाजिक सरोकार की एक सुंदर मिसाल पेश की।"
+        // partners={["Company A", "Company B"]}
+        flexDirection="row-reverse"
+      />
       {/* Example with different configuration */}
       <ContentSlider
         title="Recent Updates"
