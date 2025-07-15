@@ -2,11 +2,7 @@ import React, { useState, useEffect } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import {
-  img1,
-  img2,
-  img3,
-  img4,
-  img5,
+
   DataImg1,
   DataImg2,
   DataImg3,
@@ -85,7 +81,6 @@ const ContentSlider = ({
   autoSlide = false,
   autoSlideInterval = 3000,
   showDots = false,
-  backgroundColor = "#6e3228",
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerSlide, setItemsPerSlide] = useState(slidesToShow);
