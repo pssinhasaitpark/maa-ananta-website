@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Button, Form, Row, Col, Container, InputGroup } from "react-bootstrap";
 import {
-  MapPin,
-  Phone,
-  Mail,
-  Home,
-  User,
-  Building2,
-  MessageSquare,
-} from "lucide-react";
+  FaMapMarkerAlt,
+  FaPhone,
+  FaEnvelope,
+  FaHome,
+  FaUser,
+  FaBuilding,
+  FaComment,
+} from "react-icons/fa";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/footer";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -23,6 +23,40 @@ const ContactUs = () => {
     message: "",
     recaptcha: false,
   });
+
+  const iconContainerStyles = {
+    width: "50px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#f5f5f5",
+    border: "1px solid #ccc",
+    borderRadius: "4px 0 0 4px",
+  };
+
+  const focusedIconStyles = {
+    ...iconContainerStyles,
+    border: "2px solid #8B4513",
+    borderRight: "none",
+    backgroundColor: "#fff",
+  };
+
+  const inputStyles = {
+    flex: 1,
+    border: "1px solid #ccc",
+    borderLeft: "none",
+    borderRadius: "0 4px 4px 0",
+    paddingLeft: "10px",
+  };
+
+  const focusedInputStyles = {
+    ...inputStyles,
+    border: "2px solid #8B4513",
+    borderLeft: "none",
+    outline: "none",
+  };
+
+  const [focusedField, setFocusedField] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -149,7 +183,7 @@ const ContactUs = () => {
           {/* Breadcrumb */}
           <div className="position-absolute bottom-0 start-0 mb-3 ms-3">
             <div className="bg-white rounded shadow p-2 d-flex align-items-center justify-content-start">
-              <Home size={16} className="me-1" style={{ color: "#8B4513" }} />
+              <FaHome size={16} className="me-1" style={{ color: "#8B4513" }} />
               <span className="mx-2" style={{ color: "#8B4513" }}>
                 |
               </span>
@@ -170,7 +204,7 @@ const ContactUs = () => {
               <Col lg={11}>
                 <div className="bg-white rounded shadow p-4 p-md-5">
                   <Row className="gx-5">
-                    {/* Left - Info */}
+                    {/* Left Info */}
                     <Col lg={5} className="mb-4">
                       <div
                         className="p-4 text-white rounded"
@@ -178,180 +212,206 @@ const ContactUs = () => {
                       >
                         <h3 className="fw-bold mb-4">MAA</h3>
                         <div className="d-flex mb-3">
-                          <MapPin size={20} className="me-3 mt-1 text-white" />
+                          <FaMapMarkerAlt className="me-3 mt-1" />
                           <div>
                             <p className="mb-1">
                               SHRI CHATURBUJ SHREE RAM MANDIR MANADV
                             </p>
                             <p className="mb-1">
-                              Tehsil –NALCHA, Dist –DHAR
+                              Tehsil – NALCHA, Dist – DHAR
                               <br />
                               PIN - 451 221, Madhya Pradesh, India
                             </p>
                           </div>
                         </div>
                         <div className="d-flex mb-3">
-                          <Phone size={20} className="me-3 mt-1 text-white" />
+                          <FaPhone className="me-3 mt-1" />
                           <div>
                             <p className="mb-1">+91 9893200011</p>
                             <p className="mb-1">+91 9424032111</p>
                           </div>
                         </div>
                         <div className="d-flex">
-                          <Mail size={20} className="me-3 mt-1 text-white" />
+                          <FaEnvelope className="me-3 mt-1" />
                           <p className="mb-0">maa.anantamandu@gmail.com</p>
                         </div>
                       </div>
                     </Col>
-                    {/* Right - Form */}
-                    <Col lg={7} className="mb-4">
+
+                    {/* Right Form */}
+                    <Col lg={7}>
                       <Form onSubmit={handleSubmit}>
-                        <Row className="mb-3 text-dark">
-                          <Col md={6} className="mb-3 mb-md-0">
-                            <InputGroup>
-                              <InputGroup.Text
-                                style={{
-                                  backgroundColor: "#f8f9fa",
-                                  borderColor: "#8B4513",
-                                }}
+                        <Row className="mb-4">
+                          <Col md={6} className="mb-3">
+                            <div className="d-flex" style={{ height: "56px" }}>
+                              <div
+                                style={
+                                  focusedField === "name"
+                                    ? focusedIconStyles
+                                    : iconContainerStyles
+                                }
                               >
-                                <User size={18} style={{ color: "#8B4513" }} />
-                              </InputGroup.Text>
-                              <input
-                                type="text"
-                                name="name"
-                                placeholder="Enter your full name *"
-                                value={formData.name}
-                                onChange={handleInputChange}
-                                className=" py-3"
-                                style={{ borderColor: "#8B4513" }}
-                                required
-                              />
-                            </InputGroup>
-                          </Col>
-                          <Col md={6}>
-                            <InputGroup>
-                              <InputGroup.Text
-                                style={{
-                                  backgroundColor: "#f8f9fa",
-                                  borderColor: "#8B4513",
-                                }}
-                              >
-                                <Building2
+                                <FaUser
                                   size={18}
                                   style={{ color: "#8B4513" }}
                                 />
-                              </InputGroup.Text>
+                              </div>
+                              <input
+                                type="text"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleInputChange}
+                                onFocus={() => setFocusedField("name")}
+                                onBlur={() => setFocusedField(null)}
+                                placeholder="Enter your full name *"
+                                style={
+                                  focusedField === "name"
+                                    ? focusedInputStyles
+                                    : inputStyles
+                                }
+                                required
+                              />
+                            </div>
+                          </Col>
+                          <Col md={6}>
+                            <div className="d-flex" style={{ height: "56px" }}>
+                              <div
+                                style={
+                                  focusedField === "organization"
+                                    ? focusedIconStyles
+                                    : iconContainerStyles
+                                }
+                              >
+                                <FaBuilding
+                                  size={18}
+                                  style={{ color: "#8B4513" }}
+                                />
+                              </div>
                               <input
                                 type="text"
                                 name="organization"
-                                placeholder="Enter organization name"
                                 value={formData.organization}
                                 onChange={handleInputChange}
-                                className="py-3"
-                                style={{ borderColor: "#8B4513" }}
+                                onFocus={() => setFocusedField("organization")}
+                                onBlur={() => setFocusedField(null)}
+                                placeholder="Enter organization name"
+                                style={
+                                  focusedField === "organization"
+                                    ? focusedInputStyles
+                                    : inputStyles
+                                }
                               />
-                            </InputGroup>
+                            </div>
                           </Col>
                         </Row>
-                        <Row className="mb-3">
-                          <Col md={6} className="mb-3 mb-md-0">
-                            <InputGroup>
-                              <InputGroup.Text
-                                style={{
-                                  backgroundColor: "#f8f9fa",
-                                  borderColor: "#8B4513",
-                                }}
+
+                        <Row className="mb-4">
+                          <Col md={6} className="mb-3">
+                            <div className="d-flex" style={{ height: "56px" }}>
+                              <div
+                                style={
+                                  focusedField === "email"
+                                    ? focusedIconStyles
+                                    : iconContainerStyles
+                                }
                               >
-                                <Mail size={18} style={{ color: "#8B4513" }} />
-                              </InputGroup.Text>
+                                <FaEnvelope
+                                  size={18}
+                                  style={{ color: "#8B4513" }}
+                                />
+                              </div>
                               <input
                                 type="email"
                                 name="email"
-                                placeholder="Enter your email *"
                                 value={formData.email}
                                 onChange={handleInputChange}
-                                className=" py-3"
-                                style={{ borderColor: "#8B4513" }}
+                                onFocus={() => setFocusedField("email")}
+                                onBlur={() => setFocusedField(null)}
+                                placeholder="Enter your email *"
+                                style={
+                                  focusedField === "email"
+                                    ? focusedInputStyles
+                                    : inputStyles
+                                }
                                 required
                               />
-                            </InputGroup>
+                            </div>
                           </Col>
                           <Col md={6}>
-                            <InputGroup>
-                              <InputGroup.Text
-                                style={{
-                                  backgroundColor: "#f8f9fa",
-                                  borderColor: "#8B4513",
-                                }}
+                            <div className="d-flex" style={{ height: "56px" }}>
+                              <div
+                                style={
+                                  focusedField === "mobile"
+                                    ? focusedIconStyles
+                                    : iconContainerStyles
+                                }
                               >
-                                <Phone size={18} style={{ color: "#8B4513" }} />
-                              </InputGroup.Text>
+                                <FaPhone
+                                  size={18}
+                                  style={{ color: "#8B4513" }}
+                                />
+                              </div>
                               <input
                                 type="tel"
                                 name="mobile"
-                                placeholder="Enter mobile number *"
                                 value={formData.mobile}
                                 onChange={handleInputChange}
-                                className="py-3"
-                                style={{ borderColor: "#8B4513" }}
+                                onFocus={() => setFocusedField("mobile")}
+                                onBlur={() => setFocusedField(null)}
+                                placeholder="Enter mobile number *"
                                 pattern="[0-9]{10}"
                                 title="Please enter a valid 10-digit mobile number"
+                                style={
+                                  focusedField === "mobile"
+                                    ? focusedInputStyles
+                                    : inputStyles
+                                }
                                 required
                               />
-                            </InputGroup>
+                            </div>
                           </Col>
                         </Row>
-                        <div className="mb-3 col-sm-12">
-                          <InputGroup>
-                            <InputGroup.Text
-                              style={{
-                                backgroundColor: "#f8f9fa",
-                                borderColor: "#8B4513",
-                                alignItems: "flex-start",
-                                paddingTop: "12px",
-                              }}
+
+                        <div className="mb-4">
+                          <div className="d-flex">
+                            <div
+                              style={
+                                focusedField === "message"
+                                  ? focusedIconStyles
+                                  : iconContainerStyles
+                              }
                             >
-                              <MessageSquare
+                              <FaComment
                                 size={18}
                                 style={{ color: "#8B4513" }}
                               />
-                            </InputGroup.Text>
+                            </div>
                             <textarea
-                              rows={4}
                               name="message"
-                              placeholder="Write your message here... *"
-                              value={formData.message} 
+                              rows={4}
+                              value={formData.message}
                               onChange={handleInputChange}
-                              className="py-3"
+                              onFocus={() => setFocusedField("message")}
+                              onBlur={() => setFocusedField(null)}
+                              placeholder="Enter your message *"
                               style={{
-                                borderColor: "#8B4513",
-                                resize: "vertical",
+                                ...inputStyles,
+                                height: "100px",
+                                resize: "none",
+                                borderRadius: "0 4px 4px 0",
                               }}
                               required
-                            />
-                          </InputGroup>
+                            ></textarea>
+                          </div>
                         </div>
-                        <div className="d-flex flex-column flex-md-row align-items-center justify-content-between mt-4">
-                          <Form.Check
-                            type="checkbox"
-                            name="recaptcha"
-                            checked={formData.recaptcha}
-                            onChange={handleInputChange}
-                            label="I'm not a robot"
-                            style={{ color: "#8B4513" }}
-                            className="fs-6 mb-3 mb-md-0"
-                            required
-                          />
-                          <Button
-                            type="submit"
-                            size="lg"
-                            className="px-5 py-3 border-0 fw-semibold"
-                            style={{ backgroundColor: "#8B4513" }}
-                          >
-                            SUBMIT MESSAGE
-                          </Button>
-                        </div>
+
+                        <Button
+                          type="submit"
+                          variant="primary"
+                          style={{ backgroundColor: "#8B4513", border: "none" }}
+                        >
+                          Submit
+                        </Button>
                       </Form>
                     </Col>
                   </Row>
@@ -360,6 +420,7 @@ const ContactUs = () => {
             </Row>
           </Container>
         </div>
+
         {/* Location Map */}
         <div className="bg-light pb-5">
           <Container fluid>
@@ -371,7 +432,7 @@ const ContactUs = () => {
             </h2>
             <div className="bg-white rounded shadow">
               <iframe
-                src="https://www.google.com/maps/embed?pb=..."
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.1165997040202!2d75.39555697415273!3d22.349225779651448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396241cf6fd72615%3A0x2626a442d9b9a912!2sShri%20Ram%20Chaturbhuj%20Mandir%20Mandav!5e0!3m2!1sen!2sin!4v1752570431131!5m2!1sen!2sin"
                 width="100%"
                 height="450"
                 style={{ border: 0 }}

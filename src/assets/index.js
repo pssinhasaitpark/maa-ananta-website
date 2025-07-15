@@ -24,6 +24,10 @@ import DataImg17 from "./images/DataImg17.png";
 import DataImg18 from "./images/DataImg18.png";
 import DataImg19 from "./images/DataImg19.png";
 import group1 from "./images/group1.png";
+import DataImg21 from "./images/DataImg21.png";
+import DataImg23 from "./images/DataImg23.png";
+import DataImg22 from "./images/DataImg22.png";
+import DataImg24 from "./images/DataImg24.png";
 export {
   Logo,
   img1,
@@ -50,5 +54,9 @@ export {
   DataImg17,
   DataImg18,
   DataImg19,
-  group1
+  group1,
+  DataImg21,
+  DataImg22,
+  DataImg23,
+  DataImg24,
 };
