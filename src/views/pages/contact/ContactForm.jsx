@@ -36,7 +36,7 @@ const ContactUs = () => {
 
   const focusedIconStyles = {
     ...iconContainerStyles,
-    border: "2px solid #8B4513",
+    border: "2px solid #6A1706",
     borderRight: "none",
     backgroundColor: "#fff",
   };
@@ -51,7 +51,7 @@ const ContactUs = () => {
 
   const focusedInputStyles = {
     ...inputStyles,
-    border: "2px solid #8B4513",
+    border: "2px solid #6A1706",
     borderLeft: "none",
     outline: "none",
   };
@@ -96,7 +96,7 @@ const ContactUs = () => {
               {/* SVG Paths */}
               <path
                 d="M0,200 Q150,100 300,150 T600,120 T900,180 T1200,140"
-                stroke="#8B4513"
+                stroke="#6A1706"
                 strokeWidth="3"
                 fill="none"
               />
@@ -120,7 +120,7 @@ const ContactUs = () => {
               />
               <path
                 d="M0,280 Q300,180 600,230 T1200,210"
-                stroke="#8B4513"
+                stroke="#6A1706"
                 strokeWidth="2"
                 fill="none"
               />
@@ -138,14 +138,15 @@ const ContactUs = () => {
               />
             </svg>
           </div>
-          {/* Logo Circle */}
-          <div className="position-absolute top-50 start-50 translate-middle">
+
+          {/* Logo Circle - Hidden on mobile */}
+          <div className="position-absolute top-50 start-50 translate-middle d-none d-md-block">
             <div
               className="d-flex align-items-center justify-content-center bg-white rounded-circle shadow-lg"
               style={{
                 width: "120px",
                 height: "120px",
-                border: "4px solid #8B4513",
+                border: "4px solid #6A1706",
               }}
             >
               <div
@@ -153,7 +154,7 @@ const ContactUs = () => {
                 style={{
                   width: "60px",
                   height: "60px",
-                  backgroundColor: "#8B4513",
+                  backgroundColor: "#6A1706",
                 }}
               >
                 <div
@@ -163,40 +164,58 @@ const ContactUs = () => {
               </div>
             </div>
           </div>
-          {/* Hindi Title */}
-          <div
-            className="position-absolute top-50 start-50 translate-middle text-center"
-            style={{ marginTop: "120px" }}
-          >
-            <h1
-              className="fw-bold mb-2"
-              style={{
-                fontSize: "2.5rem",
-                fontFamily: "serif",
-                textShadow: "1px 1px 2px rgba(0,0,0,0.1)",
-                color: "#8B4513",
-              }}
-            >
-              माँ अनंता अभ्युदय सामाजिक सेवा समिति (माँ)
-            </h1>
+
+          {/* Hindi Title - Responsive */}
+          <div className="position-absolute top-50 start-50 translate-middle text-center w-100 px-3">
+            <div className="d-none d-md-block" style={{ marginTop: "200px" }}>
+              <h1
+                className="fw-bold mb-2"
+                style={{
+                  fontSize: "2.5rem",
+                  fontFamily: "serif",
+                  textShadow: "1px 1px 2px rgba(0,0,0,0.1)",
+                  color: "#6A1706",
+                  lineHeight: "1.2",
+                }}
+              >
+                माँ अनंता अभ्युदय सामाजिक सेवा समिति (माँ)
+              </h1>
+            </div>
+            <div className="d-md-none">
+              <h1
+                className="fw-bold mb-2"
+                style={{
+                  fontSize: "1.8rem",
+                  fontFamily: "serif",
+                  textShadow: "1px 1px 2px rgba(0,0,0,0.1)",
+                  color: "#6A1706",
+                  lineHeight: "1.2",
+                  wordBreak: "break-word",
+                }}
+              >
+                माँ अनंता अभ्युदय सामाजिक सेवा समिति (माँ)
+              </h1>
+            </div>
           </div>
+
           {/* Breadcrumb */}
           <div className="position-absolute bottom-0 start-0 mb-3 ms-3">
             <div className="bg-white rounded shadow p-2 d-flex align-items-center justify-content-start">
-              <FaHome size={16} className="me-1" style={{ color: "#8B4513" }} />
-              <span className="mx-2" style={{ color: "#8B4513" }}>
+              <FaHome size={16} className="me-1" style={{ color: "#6A1706" }} />
+              <span className="mx-2" style={{ color: "#6A1706" }}>
                 |
               </span>
-              <span style={{ color: "#8B4513" }}>Contact Us</span>
+              <span style={{ color: "#6A1706" }}>Contact Us</span>
             </div>
           </div>
         </div>
+
         {/* Contact Section */}
         <div className="py-5 bg-light text-dark">
           <Container>
             <h2
               className="text-center mb-5 display-5 fw-bold"
-              style={{ color: "#8B4513" }}
+              style={{ color: "#6A1706" }}
             >
               GET IN TOUCH
             </h2>
@@ -208,7 +227,7 @@ const ContactUs = () => {
                     <Col lg={5} className="mb-4">
                       <div
                         className="p-4 text-white rounded"
-                        style={{ backgroundColor: "#8B4513", height: "100%" }}
+                        style={{ backgroundColor: "#6A1706", height: "100%" }}
                       >
                         <h3 className="fw-bold mb-4">MAA</h3>
                         <div className="d-flex mb-3">
@@ -253,7 +272,7 @@ const ContactUs = () => {
                               >
                                 <FaUser
                                   size={18}
-                                  style={{ color: "#8B4513" }}
+                                  style={{ color: "#6A1706" }}
                                 />
                               </div>
                               <input
@@ -284,7 +303,7 @@ const ContactUs = () => {
                               >
                                 <FaBuilding
                                   size={18}
-                                  style={{ color: "#8B4513" }}
+                                  style={{ color: "#6A1706" }}
                                 />
                               </div>
                               <input
@@ -317,7 +336,7 @@ const ContactUs = () => {
                               >
                                 <FaEnvelope
                                   size={18}
-                                  style={{ color: "#8B4513" }}
+                                  style={{ color: "#6A1706" }}
                                 />
                               </div>
                               <input
@@ -348,7 +367,7 @@ const ContactUs = () => {
                               >
                                 <FaPhone
                                   size={18}
-                                  style={{ color: "#8B4513" }}
+                                  style={{ color: "#6A1706" }}
                                 />
                               </div>
                               <input
@@ -383,7 +402,7 @@ const ContactUs = () => {
                             >
                               <FaComment
                                 size={18}
-                                style={{ color: "#8B4513" }}
+                                style={{ color: "#6A1706" }}
                               />
                             </div>
                             <textarea
@@ -408,7 +427,7 @@ const ContactUs = () => {
                         <Button
                           type="submit"
                           variant="primary"
-                          style={{ backgroundColor: "#8B4513", border: "none" }}
+                          style={{ backgroundColor: "#6A1706", border: "none" }}
                         >
                           Submit
                         </Button>
@@ -426,7 +445,7 @@ const ContactUs = () => {
           <Container fluid>
             <h2
               className="text-center mb-4 display-6"
-              style={{ color: "#8B4513" }}
+              style={{ color: "#6A1706" }}
             >
               OUR LOCATION
             </h2>
