@@ -26,20 +26,6 @@ const LandingPage = () => {
       <NewsLetter />
       <News />
 
-      {/* <PartnerSection
-        image={img2}
-        heading="A Loving Home for Every Child"
-        content="Providing shelter, care, and education to orphaned and vulnerable children, nurturing their growth in a safe and supportive environment."
-        partners={["Company A", "Company B"]}
-        flexDirection="row"
-      />  */}
-      {/* <PartnerSection
-        image={group1}
-        heading="वृद्ध आश्रम में आवश्यक वस्तुओं का वितरण एवं वृद्धों के साथ हास्य विनोद करते हुए महेश्वर में "
-        content="24 जनवरी 2019 को महेश्वर में माँ अनंता अभुदय सामाजिक सेवा संस्था द्वारा वृद्ध आश्रम में सेवा कार्यक्रम आयोजित किया गया। इस अवसर पर आश्रम में आवश्यक वस्तुओं का वितरण किया गया, जिसमें दैनिक उपयोग की सामग्री शामिल थी। संस्था के सदस्यों ने बुज़ुर्गों के साथ समय बिताया, हास्य-विनोद और संवाद के माध्यम से उन्हें आनंदित किया। इस सेवाभावी पहल ने वृद्धजनों के चेहरे पर मुस्कान बिखेरी और सामाजिक सरोकार की एक सुंदर मिसाल पेश की।"
-        // partners={["Company A", "Company B"]}
-        flexDirection="row-reverse"
-      /> */}
       <PartnerSectionSlider
         images={[DataImg21, DataImg23, DataImg22, DataImg24]}
         heading="विश्व योग दिवस कार्यक्रम 05/06/2021  मांडव में"
