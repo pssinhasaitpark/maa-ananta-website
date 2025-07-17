@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import ".";
 
 const PartnerSection = ({
   image,
@@ -47,7 +47,7 @@ const PartnerSection = ({
           <img
             src={image}
             alt="Partner"
-            className="img-fluid rounded-4 w-100"
+            className="img-fluid rounded-4 w-100 image-custom"
             style={{
               objectFit: "cover",
               maxHeight: "500px",

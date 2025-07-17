@@ -3,12 +3,12 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-
+import './PartnerSection.css'
 const PartnerSectionSlider = ({
   images = [], // Array of images
   heading,
   content,
-  partners = [],
+  
   flexDirection = "row", // "row" or "row-reverse"
   autoAdvanceInterval = 3000, // Interval in milliseconds for auto-advancing
 }) => {
@@ -85,7 +85,7 @@ const PartnerSectionSlider = ({
               <img
                 src={images[currentImageIndex]}
                 alt="Partner"
-                className="img-fluid rounded-4 w-100"
+                className="img-fluid rounded-4 w-100 image-custom-slider"
                 style={{
                   objectFit: "cover",
                   maxHeight: "500px",

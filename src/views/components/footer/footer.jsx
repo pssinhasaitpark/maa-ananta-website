@@ -74,17 +74,17 @@ const Footer = () => {
 
       <div className="row mx-0 bg-light py-3">
         <div className="col-12">
-          <div className="d-flex justify-content-between align-items-center flex-wrap border-bottom border-top py-3 border-black">
-            <nav className="navbar navbar-expand-lg navbar-light p-0">
-              <div className="navbar-nav d-flex flex-row align-items-center">
+          <div className="d-flex  justify-content-between align-items-center flex-wrap border-bottom border-top py-3 border-black">
+            <nav className="navbar navbar-expand-lg m-lg-0 mx-auto navbar-light p-0">
+              <div className="navbar-nav d-sm-block d-lg-flex align-items-center ">
                 <a
-                  className="nav-link text-secondary px-2"
+                  className="nav-link text-secondary px-2 "
                   href="#"
                   style={{ fontSize: "1rem" }}
                 >
                   Home
                 </a>
-                <div className="vr mx-2" />
+                <div className="vr mx-2 d-none d-lg-block" />
                 <a
                   className="nav-link text-secondary px-2"
                   href="#"
@@ -92,17 +92,17 @@ const Footer = () => {
                 >
                   Services
                 </a>
-                <div className="vr mx-2" />
+                <div className="vr mx-2 d-none d-lg-block" />
                 <a
-                  className="nav-link text-secondary px-2"
+                  className="nav-link text-secondary px-lg-2 px-0"
                   href="#"
                   style={{ fontSize: "1rem" }}
                 >
                   Career and Research Opportunities
                 </a>
-                <div className="vr mx-2" />
+                <div className="vr mx-2 d-none d-lg-block" />
                 <Link
-                  className="nav-link text-secondary px-2"
+                  className="nav-link text-secondary px-lg-2 px-0"
                   to="/contact"
                   style={{ fontSize: "1rem" }}
                 >
@@ -111,7 +111,7 @@ const Footer = () => {
               </div>
             </nav>
 
-            <div className="d-flex align-items-center">
+            <div className="d-flex m-lg-0 mx-auto align-items-center">
               <span
                 className="text-secondary me-3"
                 style={{ fontSize: "1rem" }}
